@@ -1,21 +1,24 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 :root {
   /* Primary Colors */
   --background: #ffffff;
   --foreground: #1a1a1a;
-  
+ 
   /* Dale Aviation Brand Colors */
   --sidebar-bg: #0d1b2a;
   --sidebar-border: #1a3050;
   --sidebar-hover: #1a3a4d;
   --sidebar-active: #0066cc;
-  
+ 
   /* Accent Colors */
   --primary-blue: #0066cc;
   --accent-red: #cc3333;
   --accent-green: #22863a;
-  
+ 
   /* Neutral Colors */
   --light-bg: #f5f5f5;
   --light-gray: #f0f4f8;
@@ -25,10 +28,12 @@
   --text-dark: #333333;
 }
 
+
 @theme inline {
   --font-sans: 'Geist', 'Geist Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
 }
+
 
 * {
   margin: 0;
@@ -36,45 +41,55 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: var(--font-sans);
   background-color: var(--light-bg);
   color: var(--text-dark);
 }
 
+
 /* Sidebar Styles */
 .sidebar-bg {
   background-color: var(--sidebar-bg);
 }
 
+
 .sidebar-border {
   border-color: var(--sidebar-border);
 }
+
 
 .sidebar-nav-item {
   @apply w-full px-4 py-3 text-left text-white text-sm font-medium flex items-center gap-3 transition-colors duration-200;
 }
 
+
 .sidebar-nav-item:hover {
   background-color: var(--sidebar-hover);
 }
 
+
 .sidebar-nav-item.active {
   background-color: var(--sidebar-active);
 }
+
 
 /* Progress Bars */
 .progress-red {
   background-color: var(--accent-red);
 }
 
+
 .progress-green {
   background-color: var(--accent-green);
 }
 
+
 .progress-bg {
   background-color: var(--medium-gray);
 }
+
 
 /* Badges */
 .badge-red {
@@ -82,15 +97,18 @@ body {
   background-color: var(--accent-red);
 }
 
+
 .badge-green {
   @apply inline-block text-white px-3 py-1 rounded-full text-sm font-semibold;
   background-color: var(--accent-green);
 }
 
+
 .badge-gray {
   @apply inline-block text-white px-3 py-1 rounded-full text-sm font-semibold;
   background-color: #999999;
 }
+
 
 /* Tabs */
 .tabs-underline {
@@ -98,14 +116,17 @@ body {
   color: var(--text-light);
 }
 
+
 .tabs-underline:hover {
   color: var(--text-dark);
 }
+
 
 .tabs-underline.active {
   border-bottom-color: var(--primary-blue);
   color: var(--primary-blue);
 }
+
 
 /* Buttons */
 .btn-primary {
@@ -114,9 +135,11 @@ body {
   color: white;
 }
 
+
 .btn-primary:hover {
   background-color: #0052a3;
 }
+
 
 /* Cards */
 .card {
@@ -124,8 +147,12 @@ body {
   border-color: var(--border-light);
 }
 
+
 /* Header */
 .header-bg {
   @apply bg-white border-b;
   border-color: var(--border-light);
 }
+
+
+
