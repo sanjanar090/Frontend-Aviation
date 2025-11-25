@@ -35,31 +35,8 @@ export default function TaskCards({ activeTab }: TaskCardsProps) {
     }
     
     return [
-<<<<<<< HEAD
       
      
-=======
-      {
-        title: 'Workflows tasks',
-        tasks: [
-          { name: 'Complete step', red: 60, green: 40 },
-          { name: 'Complete action', red: 80, green: 20 },
-          { name: 'Close action', green: 35 },
-        ],
-      },
-      {
-        title: 'Compliance tasks',
-        tasks: [
-          { name: 'Complete audit', green: 60 },
-        ],
-      },
-      {
-        title: 'Risk tasks',
-        tasks: [
-          { name: 'Complete assessment', green: 25 },
-        ],
-      },
->>>>>>> b75a8b4a776e32a1ee56f24a596b27f958aae8a5
     ]
   }
 

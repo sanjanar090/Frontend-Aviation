@@ -2,16 +2,7 @@ import { ChevronDown, Search } from 'lucide-react'
 
 export default function TaskFilters() {
   const filters = [
-<<<<<<< HEAD
     
-=======
-    { icon: '📅', label: 'Due date: All time' },
-    { icon: '⭕', label: 'Status: All' },
-    { icon: '📋', label: 'Task: All' },
-    { icon: '🏷️', label: 'Type: All' },
-    { icon: '📦', label: 'Module: All' },
-    { icon: '👤', label: 'Assigned to: All' },
->>>>>>> b75a8b4a776e32a1ee56f24a596b27f958aae8a5
   ]
 
   return (
@@ -31,19 +22,7 @@ export default function TaskFilters() {
           <ChevronDown className="w-4 h-4 inline ml-1" />
         </button>
       ))}
-<<<<<<< HEAD
       
-=======
-      <div className="ml-auto relative">
-        <input
-          type="text"
-          placeholder="Search tasks..."
-          className="px-4 py-2 border rounded w-64 text-sm bg-white"
-          style={{ borderColor: 'var(--border-light)' }}
-        />
-        <Search className="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2" />
-      </div>
->>>>>>> b75a8b4a776e32a1ee56f24a596b27f958aae8a5
     </div>
   )
 }

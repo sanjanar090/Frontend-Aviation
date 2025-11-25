@@ -1,34 +1,44 @@
 "use client";
 
-import { useState } from "react";
-import Header from "@/components/header";
-import Sidebar from "@/components/sidebar";
-import SafetyDashboardAnalysis from "@/components/safetyanalysisdashboard";
-
-export default function SafetyPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activeTab, setActiveTab] = useState("dashboard");
-
+export default function SafetyAnalysisDashboard({ activeTab, setActiveTab }) {
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex">
 
-      {/* LEFT SIDEBAR */}
-      <Sidebar isOpen={sidebarOpen} />
+      {/* LEFT MENU */}
+      <div className="w-64 bg-white border-r p-4">
+        <button
+          className={`w-full p-2 text-left mb-2 rounded ${
+            activeTab === "dashboard" ? "bg-blue-600 text-white" : "bg-gray-100"
+          }`}
+          onClick={() => setActiveTab("dashboard")}
+        >
+          Dashboard
+        </button>
 
-      {/* RIGHT AREA */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+        <button
+          className={`w-full p-2 text-left mb-2 rounded ${
+            activeTab === "logs" ? "bg-blue-600 text-white" : "bg-gray-100"
+          }`}
+          onClick={() => setActiveTab("logs")}
+        >
+          Logs
+        </button>
 
-        {/* TOP HEADER */}
-        <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
+        <button
+          className={`w-full p-2 text-left mb-2 rounded ${
+            activeTab === "analytics" ? "bg-blue-600 text-white" : "bg-gray-100"
+          }`}
+          onClick={() => setActiveTab("analytics")}
+        >
+          Analytics
+        </button>
+      </div>
 
-        {/* PAGE CONTENT */}
-        <div className="flex-1 overflow-auto bg-[#eef3f8]">
-          <SafetyDashboardAnalysis
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-        </div>
-
+      {/* RIGHT CONTENT AREA */}
+      <div className="flex-1 p-6">
+        {activeTab === "dashboard" && <h2 className="text-xl font-bold">Dashboard View</h2>}
+        {activeTab === "logs" && <h2 className="text-xl font-bold">Logs View</h2>}
+        {activeTab === "analytics" && <h2 className="text-xl font-bold">Analytics View</h2>}
       </div>
     </div>
   );

@@ -2,143 +2,100 @@
 
 import { useState } from "react";
 import Header from "@/components/header";
-import Sidebar from "@/components/sidebar";
-
-import SafetyDashboard from "@/components/safety-dashboard";
-import SafetyCase12 from "@/components/safetycase12";
-import SafetyDrafts from "@/components/safetydrafts";
-import SafetyActions from "@/components/safetyactions";
+import SafetyAnalysisAllCases from "@/components/safetyanalysisallcases";
 import SafetyHeatmap from "@/components/safetyheatmap";
 import SafetyKPI from "@/components/safetykpi";
-import SafetyNewsletter from "@/components/safetynewsletter";
+import KPIsContent from "@/components/kpis-content";
 
-
-
-export default function SafetyPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+export default function SafetyAnalysisDashboard() {
   const [activeTab, setActiveTab] = useState("dashboard");
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} />
+    <div className="flex-1 flex flex-col overflow-hidden bg-gray-50">
 
-      {/* Right Side */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      {/* Header */}
+      <Header currentPage="Safety Analysis" />
 
-        {/* Header CHANGES BASED ON TAB */}
-        <Header
-          currentPage={
-            activeTab === "cases"
-              ? "Safety Case List"
-              : activeTab === "dashboard"
-              ? "Safety safety"
-              : activeTab === "drafts"
-              ? "Draft Safety Report Tracking"
-              : activeTab === "actions"
-              ? "Actions By User"
-              : activeTab === "heatmap"
-              ? "Safety Heatmap-Safety"
-              : activeTab === "kpi"
-              ? "KPI Report Templates"
-              : activeTab === "newsletter"
-              ? "Safety Newsletter"
-              : "Safety"
-          }
-        />
+      {/* Tabs */}
+      <div className="bg-white border-b px-6 py-3 flex gap-6">
 
-        {/* TABS */}
-        <div className="bg-white border-b px-6 py-3 flex gap-6">
+        <button
+          onClick={() => setActiveTab("dashboard")}
+          className={`pb-2 font-semibold ${
+            activeTab === "dashboard"
+              ? "text-blue-600 border-b-2 border-blue-600"
+              : "text-gray-500"
+          }`}
+        >
+          Dashboard
+        </button>
 
-          <button
-            onClick={() => setActiveTab("dashboard")}
-            className={`pb-2 ${
-              activeTab === "dashboard"
-                ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
-                : "text-gray-500"
-            }`}
-          >
-            Dashboard
-          </button>
+        <button
+          onClick={() => setActiveTab("allcases")}
+          className={`pb-2 ${
+            activeTab === "allcases"
+              ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          All cases
+        </button>
 
-          <button
-            onClick={() => setActiveTab("cases")}
-            className={`pb-2 ${
-              activeTab === "cases"
-                ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
-                : "text-gray-500"
-            }`}
-          >
-            Cases (12)
-          </button>
+        <button
+          onClick={() => setActiveTab("heatmap")}
+          className={`pb-2 ${
+            activeTab === "heatmap"
+              ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          Heatmap
+        </button>
 
-          <button
-            onClick={() => setActiveTab("drafts")}
-            className={`pb-2 ${
-              activeTab === "drafts"
-                ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
-                : "text-gray-500"
-            }`}
-          >
-            Drafts
-          </button>
+        <button
+          onClick={() => setActiveTab("kpi")}
+          className={`pb-2 ${
+            activeTab === "kpi"
+              ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          KPIs
+        </button>
 
-          <button
-            onClick={() => setActiveTab("actions")}
-            className={`pb-2 ${
-              activeTab === "actions"
-                ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
-                : "text-gray-500"
-            }`}
-          >
-            Actions (2)
-          </button>
-
-          <button
-            onClick={() => setActiveTab("heatmap")}
-            className={`pb-2 ${
-              activeTab === "heatmap"
-                ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
-                : "text-gray-500"
-            }`}
-          >
-            Heatmap
-          </button>
-
-          <button
-            onClick={() => setActiveTab("kpi")}
-            className={`pb-2 ${
-              activeTab === "kpi"
-                ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
-                : "text-gray-500"
-            }`}
-          >
-            KPIs
-          </button>
-
-          <button
-            onClick={() => setActiveTab("newsletter")}
-            className={`pb-2 ${
-              activeTab === "newsletter"
-                ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
-                : "text-gray-500"
-            }`}
-          >
-            Newsletter
-          </button>
-        </div>
-
-        {/* PAGE CONTENT */}
-        <main className="flex-1 overflow-auto">
-          {activeTab === "dashboard" && <SafetyDashboard />}
-          {activeTab === "cases" && <SafetyCase12 />}
-          {activeTab === "drafts" && <SafetyDrafts />}
-          {activeTab === "actions" && <SafetyActions />}
-          {activeTab === "heatmap" && <SafetyHeatmap />}
-          {activeTab === "kpi" && <SafetyKPI />}
-          {activeTab === "newsletter" && <SafetyNewsletter />}
-        </main>
+        <button
+          onClick={() => setActiveTab("reference")}
+          className={`pb-2 ${
+            activeTab === "reference"
+              ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          Reference values
+        </button>
       </div>
+
+      {/* Content Switcher */}
+      <main className="flex-1 overflow-auto p-6">
+
+        {activeTab === "dashboard" && (
+          <div>
+            {/* Your EXISTING dashboard table */}
+            <h2 className="text-lg font-semibold mb-4">
+              My Safety tasks <span className="text-green-600">(1)</span>
+            </h2>
+            {/* Keep your previous dashboard content here */}
+          </div>
+        )}
+
+        {activeTab === "allcases" && <SafetyAnalysisAllCases />}
+
+        {activeTab === "heatmap" && <SafetyHeatmap />}
+
+        {activeTab === "kpi" && <SafetyKPI />}
+
+        {activeTab === "reference" && <KPIsContent />}
+      </main>
     </div>
   );
 }
