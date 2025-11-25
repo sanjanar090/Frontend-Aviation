@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -141,4 +142,13 @@ All colors MUST be HSL.
   }
 }
 
+/* In your separate CSS file (e.g., app.css) */
+.info-icon-gradient {
+    background-image: linear-gradient(180deg, #126fd6, #57aaff);
+}
 
+.info-banner-container {
+    /* Define the subtle light blue background for the entire banner */
+    border-left: 8px solid #126fd6; /* The dark blue for the left bar */
+    border: 1px solid #90b8f0; /* A custom light blue border color */
+}
