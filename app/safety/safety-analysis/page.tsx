@@ -1,70 +1,101 @@
 "use client";
 
 import { useState } from "react";
-import Sidebar from "@/components/sidebar";
 import Header from "@/components/header";
+import SafetyAnalysisAllCases from "@/components/safetyanalysisallcases";
+import SafetyHeatmap from "@/components/safetyheatmap";
+import SafetyKPI from "@/components/safetykpi";
+import KPIsContent from "@/components/kpis-content";
 
-// -----------------------------
-// Internal SafetyAnalysis UI Component
-// -----------------------------
-function SafetyAnalysis() {
-  return (
-    <div className="text-black text-lg">
-      Safety Dashboard Loaded Successfully ✔
-    </div>
-  );
-}
-
-// -----------------------------
-// Main Page Component (Default Export)
-// -----------------------------
-export default function SafetyAnalysisPage() {
-  const [sidebarOpen] = useState(true);
+export default function SafetyAnalysisDashboard() {
   const [activeTab, setActiveTab] = useState("dashboard");
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex-1 flex flex-col overflow-hidden bg-gray-50">
 
-      {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} />
+      {/* Header */}
+      <Header currentPage="Safety Analysis" />
 
-      {/* Right Side */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      {/* Tabs */}
+      <div className="bg-white border-b px-6 py-3 flex gap-6">
 
-        {/* Header */}
-        <Header currentPage="Safety - Analysis (All)" />
+        <button
+          onClick={() => setActiveTab("dashboard")}
+          className={`pb-2 font-semibold ${
+            activeTab === "dashboard"
+              ? "text-blue-600 border-b-2 border-blue-600"
+              : "text-gray-500"
+          }`}
+        >
+          Dashboard
+        </button>
 
-        {/* Tabs */}
-        <div className="w-full bg-[#dbe4ec] border-b">
-          <div className="flex gap-8 px-6 h-12 items-center text-sm">
+        <button
+          onClick={() => setActiveTab("allcases")}
+          className={`pb-2 ${
+            activeTab === "allcases"
+              ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          All cases
+        </button>
 
-            {["dashboard", "cases", "heatmap", "kpi", "ref"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={
-                  activeTab === tab
-                    ? "text-blue-700 font-semibold border-b-2 border-blue-700 pb-1"
-                    : "text-gray-600"
-                }
-              >
-                {tab === "dashboard" && "Dashboard"}
-                {tab === "cases" && "All cases"}
-                {tab === "heatmap" && "Heatmap"}
-                {tab === "kpi" && "KPIs"}
-                {tab === "ref" && "Reference values"}
-              </button>
-            ))}
+        <button
+          onClick={() => setActiveTab("heatmap")}
+          className={`pb-2 ${
+            activeTab === "heatmap"
+              ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          Heatmap
+        </button>
 
-          </div>
-        </div>
+        <button
+          onClick={() => setActiveTab("kpi")}
+          className={`pb-2 ${
+            activeTab === "kpi"
+              ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          KPIs
+        </button>
 
-        {/* Content Area */}
-        <main className="flex-1 overflow-auto p-6">
-          {activeTab === "dashboard" && <SafetyAnalysis />}
-        </main>
-
+        <button
+          onClick={() => setActiveTab("reference")}
+          className={`pb-2 ${
+            activeTab === "reference"
+              ? "text-blue-600 border-b-2 border-blue-600 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          Reference values
+        </button>
       </div>
+
+      {/* Content Switcher */}
+      <main className="flex-1 overflow-auto p-6">
+
+        {activeTab === "dashboard" && (
+          <div>
+            {/* Your EXISTING dashboard table */}
+            <h2 className="text-lg font-semibold mb-4">
+              My Safety tasks <span className="text-green-600">(1)</span>
+            </h2>
+            {/* Keep your previous dashboard content here */}
+          </div>
+        )}
+
+        {activeTab === "allcases" && <SafetyAnalysisAllCases />}
+
+        {activeTab === "heatmap" && <SafetyHeatmap />}
+
+        {activeTab === "kpi" && <SafetyKPI />}
+
+        {activeTab === "reference" && <KPIsContent />}
+      </main>
     </div>
   );
 }

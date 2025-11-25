@@ -12,6 +12,8 @@ import SafetyHeatmap from "@/components/safetyheatmap";
 import SafetyKPI from "@/components/safetykpi";
 import SafetyNewsletter from "@/components/safetynewsletter";
 
+
+
 export default function SafetyPage() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("dashboard");
