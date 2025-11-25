@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import './index.css'
+import './App.css'
 
 const geistSans = Geist({ subsets: ['latin'] })
 const geistMono = Geist_Mono({ subsets: ['latin'] })
@@ -19,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.className} antialiased bg-gray-50`}>
+      <body
+        className={`${geistSans.className} antialiased bg-background text-foreground`}
+      >
         {children}
         <Analytics />
       </body>
