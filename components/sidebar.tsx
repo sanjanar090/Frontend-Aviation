@@ -21,7 +21,8 @@ export default function Sidebar({ isOpen }: SidebarProps) {
       submenu: [
   { label: 'Safety', href: '/safety' },
   { label: 'Health, Safety and E...', href: '/safety/health' },
-  { label: 'Analysis (All)', href: '/safety/allcases' },  // ✔ FIXED HERE
+ { label: 'Analysis (All)', href: '/safety/analysis' }
+  // ✔ FIXED HERE
 ],
 
     },
@@ -43,6 +44,15 @@ export default function Sidebar({ isOpen }: SidebarProps) {
     { icon: Users, label: 'Contacts', href: '/contacts' },
     { icon: LifeBuoy, label: 'Support', href: '/support' },
   ]
+  {/* All Cases Tab */}
+  
+        <li
+          className="cursor-pointer hover:text-blue-400"
+          onClick={() => onTabChange("allcases")}
+        >
+          All Cases
+        </li>
+        
 
   return (
     <aside className="w-56 sidebar-bg text-white flex flex-col">
@@ -106,3 +116,8 @@ export default function Sidebar({ isOpen }: SidebarProps) {
     </aside>
   )
 }
+
+<Link href="#" onClick={() => onTabChange("allcases")}>
+  Analysis (All)
+</Link>
+
